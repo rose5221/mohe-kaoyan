@@ -1,0 +1,53 @@
+.practice-library {
+  width: min(calc(100% - 2 * max(24px, env(safe-area-inset-left), env(safe-area-inset-right))), 880px);
+  margin-inline: auto;
+  padding-block: clamp(20px, 5vh, 44px) max(24px, env(safe-area-inset-bottom));
+}
+.practice-edition + .practice-edition { margin-top: 28px; }
+.practice-edition-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  color: var(--exam-muted);
+  font: 900 .9375rem/1.5 var(--serif);
+  font-variant-numeric: tabular-nums;
+}
+.practice-edition-title::after {
+  content: "";
+  flex: 1;
+  border-block-start: 1px solid var(--exam-rule);
+}
+.practice-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 110px));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.practice-book {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 4px 6px 8px;
+  border-radius: 4px;
+  color: var(--exam-ink);
+  font-size: .875rem;
+  text-align: center;
+  text-decoration: none;
+}
+.practice-book img {
+  display: block;
+  width: clamp(72px, 16vw, 88px);
+  height: auto;
+}
+.practice-book:focus-visible {
+  outline: 2px solid var(--exam-red);
+  outline-offset: 4px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .practice-book img { transition: transform 160ms ease-out; }
+  .practice-book:hover img { transform: translateY(-2px); }
+}
+.practice-book:hover { background: var(--exam-wash); }

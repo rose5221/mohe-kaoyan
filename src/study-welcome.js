@@ -26,11 +26,14 @@
   if(!['https:','http:'].includes(win.location.protocol)||!win.fetch)return '';
   // A plain local static server has no edge metadata; don't make a failing request.
   if(['localhost','127.0.0.1','[::1]'].includes(win.location.hostname))return '';
+  // Static-only hosts ship no edge function; skip instead of requesting a 404.
+  if(/\.github\.io$/i.test(win.location.hostname))return '';
+  const endpoint=new win.URL('api/study-location',win.location.href).href;
   const controller=new win.AbortController();let timer;
   try{
    const expired=new Promise(resolve=>{timer=win.setTimeout(()=>{controller.abort();resolve('')},timeout)});
    const result=(async()=>{
-    const response=await win.fetch('/api/study-location',{credentials:'omit',cache:'no-store',signal:controller.signal,headers:{Accept:'application/json'}});
+    const response=await win.fetch(endpoint,{credentials:'omit',cache:'no-store',signal:controller.signal,headers:{Accept:'application/json'}});
     if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))return '';
     return placeLabel(await response.json());
    })().catch(()=>'');

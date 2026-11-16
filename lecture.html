@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A0D12"><meta name="description" content="47站史纲地图讲堂：语音讲解、动态地图、同步字幕、原创自测。把年份连成线，把考点放回历史现场。">
+<title>史纲地图讲堂 · 考研政治</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230c171e'/%3E%3Cpath d='M8 27L20 8L32 27M12 22H28' fill='none' stroke='%23ccac76' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/v51/sans-core-e274e4789ecb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="src/lecture.css?v=51">
+<script defer src="map_data.js?v=16"></script>
+<script defer src="src/study-map.js?v=29"></script><script defer src="src/lecture-data.js"></script><script defer src="src/lecture-audio.js"></script><script defer src="src/study-scenes.js?v=16"></script><script defer src="src/study-ui.js?v=61"></script><script defer src="src/study-together.js?v=42"></script><script defer src="src/study-welcome.js?v=44"></script><script defer src="src/study-community.js?v=33"></script><script defer src="src/study-resources.js?v=61"></script><script defer src="src/lecture-story.js?v=19"></script><script defer src="src/lecture.js?v=40"></script>
+<link rel="stylesheet" href="src/study-theme.css?v=16">
+<link rel="stylesheet" href="src/study-editorial.css?v=16">
+<link rel="stylesheet" href="src/study-system.css?v=61">
+<link rel="stylesheet" href="src/study-together.css?v=33">
+<link rel="stylesheet" href="src/study-welcome.css?v=43">
+<link rel="stylesheet" href="src/study-map.css?v=29">
+<link rel="stylesheet" href="src/study-map-controls.css?v=28">
+<link rel="stylesheet" href="src/study-resources.css?v=34">
+<link rel="stylesheet" href="src/study-support.css?v=49">
+<script defer src="src/study-support.js?v=53"></script>
+</head>
+<body>
+<div class="lecture-app">
+ <header class="study-header" data-page="lecture"></header>
+ <div class="workspace-toolbar">
+  <button id="mobileContents" class="directory-toggle" aria-expanded="false" aria-controls="contents">☷ 章节目录 <span>47 站</span></button>
+  <h1 class="sr-only">史纲地图讲堂</h1><span id="sceneStatus" class="sr-only">选择节点，播放历史进程</span>
+  <div class="toolbar-options"><button id="actorsBtn" aria-pressed="true">人物演绎 <i></i></button><button id="focusBtn" aria-pressed="false">展开地图</button></div>
+ </div>
+ <main class="workspace">
+  <aside class="contents" id="contents" aria-label="章节目录">
+   <div class="contents-heading"><b>学习路径</b><span id="chapterCounter">7 个篇章</span><button id="closeContents" aria-label="关闭目录">×</button></div>
+   <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="lessonSearch" type="search" placeholder="找年份、事件、考点" aria-label="搜索讲堂节点"></label>
+   <div class="toc-filters" aria-label="目录筛选"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="unheard" aria-pressed="false">未听</button><button data-filter="weak" aria-pressed="false">薄弱</button><button data-filter="star" aria-pressed="false">收藏</button></div>
+   <div id="chapterList" class="chapter-list"></div>
+   <div class="contents-foot"><span class="local-dot"></span>进度保存在当前浏览器<button id="aboutBtn" aria-label="查看内容来源与说明">ⓘ</button></div>
+  </aside>
+  <section class="map-panel" aria-label="历史地图">
+   <div class="map-head"><div><span class="eyebrow" id="chapterKicker">第一章 · 山河初变</span><div class="map-year" id="mapYear">1839</div><span id="mapPlace" class="map-place">广东 · 虎门</span></div><div class="map-actions"><button id="focusMap" title="镜头返回当前节点" aria-label="定位当前事件">⌖</button><button id="zoomIn" aria-label="放大地图">＋</button><button id="zoomOut" aria-label="缩小地图">−</button><button id="overviewMap" title="查看全国" aria-label="查看全国地图">全图</button></div></div>
+   <svg id="lectureMap" viewBox="0 0 1000 780" role="img" aria-label="中国现代行政区划底图，历史事件位置与进程示意" tabindex="0">
+    <defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#ECE2CE" stroke-width=".65" opacity=".08"/></pattern><marker id="routeArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#d6b77d"/></marker></defs>
+    <rect width="1000" height="780" fill="url(#grid)"/>
+    <g id="provinceShapes"></g><g id="provinceNames"></g><g id="pastPins"></g><g id="routeLayer"></g><g id="storyLayer" aria-label="历史人物场景演绎"></g><g id="activePins"></g>
+   </svg>
+   <div id="lectureInsets" class="territory-insets"></div>
+   <div class="map-key"><span><i class="gold"></i>当前事件</span><span><i class="teal"></i>已听节点</span><label><input type="checkbox" id="showTrail" checked> 足迹</label></div>
+   <div id="routeCaption" class="route-caption"></div>
+
+   <div class="map-disclaimer">现代底图定位 · 历史事件与路线示意</div>
+  </section>
+  <aside class="lesson-panel" aria-label="节点讲解与练习">
+   <div class="lesson-scroll">
+    <div class="lesson-meta"><span id="lessonPosition" class="sr-only">01 / 47</span><button id="starBtn" aria-label="收藏当前节点" aria-pressed="false">☆ 收藏</button></div>
+    <div id="lessonDate" class="lesson-date">1839.6</div><h2 id="lessonTitle">虎门销烟</h2>
+    <div class="lesson-tabs" role="tablist" aria-label="学习内容"><button id="summaryTab" role="tab" aria-selected="true" aria-controls="summaryPanel">读懂这一站</button><button id="quizTab" role="tab" aria-selected="false" aria-controls="quizPanel">随堂自测 <span id="quizDot"></span></button></div>
+    <section id="summaryPanel" role="tabpanel" aria-labelledby="summaryTab">
+     <div class="section-label">发生了什么</div><p id="lessonBody" class="lesson-body"></p><div id="lessonScene"></div>
+     <div class="key-points"><div class="section-label">考点落在哪</div><ol id="lessonPoints"></ol></div>
+     <div class="mistake"><span>别记混</span><p id="lessonMistake"></p></div>
+     <div id="contextChain" class="context-chain"></div>
+     <details class="note-block"><summary>我的一句话笔记 <span>＋</span></summary><label for="lessonNote" class="sr-only">当前节点笔记</label><textarea id="lessonNote" placeholder="用自己的话，把这一站讲明白……" maxlength="1000"></textarea><small>自动保存 · 仅当前浏览器</small></details>
+    </section>
+    <section id="quizPanel" role="tabpanel" aria-labelledby="quizTab" hidden><div class="quiz-label">原创巩固题 · 单选</div><h3 id="quizQuestion"></h3><div id="quizOptions"></div><div id="quizFeedback" role="status" hidden></div><button id="retryQuiz" hidden>重新作答</button><p class="quiz-tip">先回忆，再核对。答错的节点会进入「薄弱」。</p></section>
+   </div>
+   <div class="lesson-bottom"><button id="markLearned">✓ 标记掌握</button><a id="deepLink" href="kaoyan-review.html">时间轴详解 ↗</a></div>
+  </aside>
+ </main>
+ <footer class="player">
+  <div id="captionRow" class="caption-row" hidden><span id="subtitleLabel" class="sr-only">同步讲稿</span><p id="subtitle"></p></div>
+  <div class="player-main"><div class="transport"><button id="prevLesson" aria-label="上一站" title="上一站（←）"><svg viewBox="0 0 24 24"><path d="M6 5v14M18 5 8 12l10 7Z"/></svg></button><button id="playLesson" aria-label="播放讲解" class="play-button"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></svg></button><button id="nextLesson" aria-label="下一站" title="下一站（→）"><svg viewBox="0 0 24 24"><path d="M18 5v14M6 5l10 7-10 7Z"/></svg></button></div><div class="now-playing"><b id="playingTitle">虎门销烟</b><span id="audioState">点击播放</span></div><div class="audio-track"><span id="elapsed">00:00</span><input id="audioSeek" aria-label="讲解播放进度" type="range" min="0" max="100" value="0" step=".1"><span id="duration">00:00</span></div><div class="player-options"><button id="speedBtn" title="调整播放速度">1×</button><button id="muteBtn" aria-label="静音" aria-pressed="false">声音开</button><label class="auto-label"><input id="autoNext" type="checkbox" checked>连续播放</label><button id="captionBtn" aria-pressed="false" aria-controls="captionRow">字幕</button><button id="transcriptBtn" title="查看完整讲稿" aria-label="查看完整讲稿">讲稿</button></div></div>
+  <div class="timeline-row"><span class="timeline-label">历史坐标</span><div id="lessonRail" class="lesson-rail" aria-label="按节点跳转"></div><span id="railPosition">01 / 47</span></div>
+ </footer>
+</div>
+<audio id="narrator" preload="none"></audio>
+<dialog id="infoDialog" class="study-dialog" aria-labelledby="dialogTitle"><div class="study-dialog-head"><h2 id="dialogTitle">学习足迹</h2><button id="closeDialog" class="study-dialog-close" type="button" aria-label="关闭弹窗">×</button></div><div id="dialogBody" class="study-dialog-body"></div></dialog>
+<div id="toast" role="status" hidden></div><input id="importFile" type="file" accept="application/json,.json" hidden>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8e5b8396976a47ae8d20547ca0a24ce4"}'></script><!-- Cloudflare Pages Analytics --></body></html>
