@@ -1,0 +1,79 @@
+/* Shared cartographic details, kept clear of the interactive canvas. */
+.territory-insets[hidden]{display:none!important}
+.territory-overlay{color:var(--paper)}
+.territory-sea-lines{fill:var(--paper);stroke:var(--paper);stroke-width:.8;vector-effect:non-scaling-stroke;opacity:.75}
+.territory-landmarks circle,.territory-island-point{fill:var(--paper);stroke:var(--plate);stroke-width:.5}
+.territory-landmarks text,.territory-inset text{font-family:var(--study-font-body)!important;font-weight:400;fill:var(--paper);stroke:var(--plate);stroke-width:2;paint-order:stroke fill;letter-spacing:0}
+.island-leader{fill:none;stroke:var(--paper);stroke-width:.7;opacity:.8}
+.territory-insets,#nhInset.territory-insets{position:absolute;right:16px;bottom:44px;width:164px;display:grid;grid-template-columns:64px 94px;grid-template-rows:auto 22px;gap:4px 6px;align-items:end;background:transparent;border:0;padding:0;z-index:4;height:auto;pointer-events:auto}
+#nhInset.territory-insets::after{display:none}
+.territory-inset{margin:0;min-width:0;padding:6px;border:1px solid var(--line);background:var(--surface);border-radius:3px}
+.territory-inset[role=button]{cursor:zoom-in}.territory-inset[role=button]:hover{border-color:var(--gold)}
+.territory-detail-dialog[data-inset=south]{--dialog-width:440px}
+.territory-detail-dialog[data-inset=east]{--dialog-width:560px}
+.territory-detail-dialog.study-dialog .study-dialog-head h2{font-size:18px}
+.territory-detail-dialog .territory-inset{border:0;background:var(--plate);padding:12px}
+.territory-detail-dialog .territory-inset svg{margin:auto;max-height:min(54dvh,420px)}
+.territory-detail-dialog .territory-south svg{max-width:320px;aspect-ratio:160/210}
+.territory-detail-dialog .territory-east svg{aspect-ratio:2/1}
+.territory-detail-dialog .territory-inset text{stroke-width:1;vector-effect:non-scaling-stroke}
+.territory-detail-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0 12px}
+.territory-detail-footer .map-source-button{min-height:44px;font-size:12px}
+@media(max-width:700px){.territory-detail-dialog.study-dialog .study-dialog-head h2{font-size:16px}}
+
+.territory-inset figcaption{font:400 10px/1.6 var(--study-font-body);text-align:center;color:var(--text-dim);margin:0 0 4px;letter-spacing:0}
+.territory-inset svg,#nhInset.territory-insets svg{display:block;position:static;width:100%;height:auto;overflow:hidden;max-height:none}
+.territory-inset .territory-land,#nhInset .territory-land{fill:#ECE2CE22;stroke:var(--text-dim);stroke-width:.7;vector-effect:non-scaling-stroke}
+#nhInset .territory-sea-lines{fill:var(--paper);stroke:var(--paper);stroke-width:.8}
+.map-source-button{border:0;background:transparent;color:var(--gold);padding:2px 6px;min-height:28px;font:400 10px/1.7 var(--study-font-body);cursor:pointer}
+.map-panel #lectureMap{width:100%}
+.timeline-page #mapWrap{padding-right:24px;padding-bottom:64px}
+.timeline-page #mapNote{max-width:none;left:24px;right:24px;bottom:12px;text-align:left;font-size:10px}
+.timeline-page #mapLegend{bottom:36px;left:24px;gap:12px;font-size:10px}
+.timeline-page #histTag{font-size:10px;top:80px;right:24px}
+.sb-stage #sbSvg{width:100%}
+.sb-stage .territory-insets{bottom:38px;right:12px}
+.map-source-dialog{--dialog-width:920px}
+.map-source-dialog p{font-size:13px;line-height:1.9;margin:8px 0;color:var(--text-dim)}
+.territory-detail-dialog .territory-detail-footer p{margin:0;font-size:11px}
+.map-source-dialog b{font-weight:400;color:var(--paper)}
+.map-source-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin:12px 0 18px;font-size:12px}
+.map-source-links a{color:var(--gold)}
+.official-map-preview img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+
+/* Both references share one compact corner, without reserving a sidebar. */
+.territory-insets>.territory-inset{padding:4px}
+.territory-insets>.territory-inset figcaption{font-size:9px;line-height:1.4;margin-bottom:3px;white-space:nowrap}
+.territory-insets>.territory-south{grid-column:1;grid-row:1/3}
+.territory-insets>.territory-east{grid-column:2;grid-row:1}
+.territory-insets>.map-source-button{grid-column:2;grid-row:2;justify-self:end;padding:0 3px;min-height:22px;font-size:9px}
+@media(max-width:900px){
+ .map-panel #lectureMap{height:calc(100% - 128px)}
+ .map-panel .territory-insets{bottom:25px;right:18px}
+ .map-panel .map-key{left:18px;right:198px;bottom:60px;gap:5px 8px;flex-wrap:wrap}
+ .map-panel .route-caption{left:18px;right:198px;bottom:36px}
+}
+@media(max-width:700px){
+ .timeline-page #mapWrap{padding:118px 18px 144px}
+ #nhInset.territory-insets{right:18px;bottom:28px}
+ .timeline-page #mapNote{left:18px;right:18px;bottom:9px;font-size:9px}
+ .timeline-page #mapLegend{left:18px;right:198px;bottom:50px;font-size:9px;gap:5px 8px;flex-wrap:wrap}
+}
+@media(max-width:600px){
+ .sb-stage #sbSvg{height:calc(100% - 118px)}
+ .sb-stage .territory-insets{right:10px;bottom:8px}
+ .sb-hint{right:188px;bottom:15px;font-size:9px;line-height:1.7}
+}
+@media(max-height:650px){
+ body.timeline-page.timeline-map-view{overflow-y:auto!important}
+ .timeline-page.timeline-map-view #app{min-height:760px}
+}
+@media(max-width:700px) and (max-height:700px){
+ body.timeline-page.timeline-map-view{overflow-y:auto!important}
+ .timeline-page.timeline-map-view #app{min-height:900px}
+}
+@media(max-height:520px) and (min-width:601px){
+ .sb-stage .territory-insets{right:10px;bottom:12px}
+}
+/* Island names remain readable in the enlarged inset during 3D playback. */
+.sb-stage .territory-landmarks text,.sb-stage .territory-landmarks .island-leader{display:none}

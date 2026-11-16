@@ -1,0 +1,47 @@
+/* A borderless light-and-type entrance. No panel, backdrop or reserved space. */
+.study-arrival{position:fixed;left:50%;top:43%;width:min(460px,calc(100vw - 32px));transform:translate(-50%,-50%);z-index:30;pointer-events:none;isolation:isolate}
+.study-arrival-scene{position:relative;display:flex;flex-direction:column;align-items:center;padding:6px 12px 22px;box-sizing:border-box;text-align:center;color:var(--paper);transform-origin:50% 50%;font-family:var(--study-font-body,var(--sans));border:0;background:none;box-shadow:none}
+/* The feathered ink wash has no straight edges and leaves the map visible. */
+.study-arrival-scene::before{content:'';position:absolute;z-index:-1;inset:-32px -36px -28px;pointer-events:none;background:radial-gradient(ellipse closest-side,#080B10ed 15%,#080B10cb 55%,#080B1070 76%,transparent 100%);filter:blur(12px)}
+.study-arrival-mark{position:relative;width:228px;height:96px;margin:0 0 3px;color:var(--gold);filter:drop-shadow(0 0 8px #C9A24D35)}
+.study-arrival-mark::before{content:'';position:absolute;inset:16px 50px;background:radial-gradient(ellipse,#C9A24D20,transparent 68%);filter:blur(10px)}
+.study-arrival-mark svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:.8}
+.arrival-orbit-faint{stroke-opacity:.15}.arrival-orbit-main{stroke-opacity:.62;stroke-dasharray:330;stroke-dashoffset:0;animation:arrival-orbit-draw 1100ms cubic-bezier(.16,1,.3,1) both}
+.arrival-orbit-inner{stroke-opacity:.34;stroke-dasharray:6 6}.arrival-star{fill:#F4DDA4;stroke:none;filter:drop-shadow(0 0 5px #C9A24D)}
+.arrival-satellite{fill:var(--gold);stroke:none;opacity:.8}.arrival-radiance{stroke:#F0D497;stroke-opacity:.7;stroke-width:.7}
+.study-arrival-kicker{margin:0 0 10px!important;font:400 11px/1.5 var(--study-font-body,var(--sans));letter-spacing:5px;color:#D8B66F;text-shadow:0 2px 10px #000;animation:arrival-type-in 550ms cubic-bezier(.16,1,.3,1) both}
+.study-arrival-place{margin:0!important;font:900 32px/1.45 var(--study-font-display,var(--serif));letter-spacing:1.6px;text-wrap:balance;overflow-wrap:anywhere;text-shadow:0 2px 4px #080B10,0 0 20px #080B10,0 0 36px #080B10;animation:arrival-type-in 700ms 70ms cubic-bezier(.16,1,.3,1) both}
+.study-arrival .study-arrival-place{font-family:var(--study-font-display,var(--serif))!important;font-weight:900!important}
+.study-arrival-caption{margin:12px 0 0!important;font:400 12px/1.6 var(--study-font-body,var(--sans));letter-spacing:2px;color:#CDC1AB;text-shadow:0 2px 10px #000,0 0 18px #080B10;animation:arrival-type-in 650ms 150ms cubic-bezier(.16,1,.3,1) both}
+.study-arrival-long .study-arrival-place{font-size:28px}
+.study-arrival-dust{position:absolute;width:3px;height:3px;left:15%;top:42%;border-radius:50%;background:#D8B66F;box-shadow:0 0 7px #C9A24D99;opacity:.6}
+.study-arrival-dust:nth-of-type(2){left:82%;top:61%;width:2px;height:2px;opacity:.45}.study-arrival-dust:nth-of-type(3){left:70%;top:18%;width:2px;height:2px;opacity:.4}
+.study-arrival[data-phase=flying] .study-arrival-scene::before{opacity:0;transition:opacity 400ms}
+.study-arrival-comet{position:fixed;z-index:31;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;pointer-events:none;background:#F3DFAC;box-shadow:0 0 9px #F3DFAC,0 0 24px #C9A24Da0;opacity:0;transform-origin:center}
+.study-arrival-trail{position:fixed;inset:0;width:100%;height:100%;z-index:29;pointer-events:none;overflow:visible;fill:none;stroke:#E1BE78;stroke-width:1.2;stroke-linecap:round;opacity:0;filter:drop-shadow(0 0 4px #C9A24D70)}
+.study-arrival-plus,.study-arrival-old{position:fixed;z-index:31;pointer-events:none;color:var(--gold);font:400 12px/1 var(--study-font-body,var(--sans));text-shadow:0 0 9px #C9A24D70}
+.study-arrival-old{text-align:right;font-variant-numeric:tabular-nums;text-shadow:none}
+.study-arrival-ripple{position:fixed;z-index:30;width:26px;height:26px;margin:-13px 0 0 -13px;border:1px solid #E1BE78;border-radius:50%;pointer-events:none;box-shadow:0 0 10px #C9A24D22}
+@keyframes arrival-orbit-draw{from{stroke-dashoffset:330;opacity:0;transform:translateY(5px)}to{stroke-dashoffset:0;opacity:1;transform:translateY(0)}}
+@keyframes arrival-type-in{from{opacity:0;transform:translateY(10px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:700px){
+ .study-arrival{width:min(350px,calc(100vw - 24px))}
+ .study-arrival-scene{padding:4px 8px 18px}.study-arrival-scene::before{inset:-20px -10px -20px;filter:blur(8px)}
+ .study-arrival-mark{width:190px;height:80px;margin-bottom:2px}
+ .study-arrival-place{font-size:26px;letter-spacing:1px}.study-arrival-long .study-arrival-place{font-size:23px}
+ .study-arrival-kicker{font-size:10px;margin-bottom:9px!important;letter-spacing:4px}
+ .study-arrival-caption{font-size:11px;letter-spacing:1.2px;margin-top:10px!important}
+}
+@media(max-width:350px){.study-arrival-place{font-size:24px}.study-arrival-long .study-arrival-place{font-size:22px}.study-arrival-mark{width:172px;height:72px}}
+@media(max-height:480px){
+ .study-arrival-scene{padding:0 10px 10px}.study-arrival-mark{width:130px;height:52px;margin-bottom:0}
+ .study-arrival-kicker{margin-bottom:5px!important;font-size:10px}.study-arrival-place,.study-arrival-long .study-arrival-place{font-size:23px}
+ .study-arrival-caption{margin-top:7px!important;font-size:11px}.study-arrival-dust{display:none}
+}
+@media(prefers-reduced-motion:reduce){.study-arrival :is(.arrival-orbit-main,.study-arrival-kicker,.study-arrival-place,.study-arrival-caption){animation:none}.study-arrival[data-phase=flying] .study-arrival-scene::before{transition:none}}
+/* Design inspection uses the production geometry without freezing halfway through reveal. */
+.study-arrival[data-phase=review-still] :is(.arrival-orbit-main,.study-arrival-kicker,.study-arrival-place,.study-arrival-caption){animation:none}
+.study-arrival[data-reduced=true] :is(.arrival-orbit-main,.study-arrival-kicker,.study-arrival-place,.study-arrival-caption){animation:none}
+.study-arrival-compact .study-arrival-mark{height:36px;width:102px;margin:0}
+.study-arrival-compact .study-arrival-kicker{display:none}
+.study-arrival-compact .study-arrival-scene{padding-top:0;padding-bottom:8px}

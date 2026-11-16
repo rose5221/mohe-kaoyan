@@ -1,0 +1,62 @@
+/* Hallmark · component: shared resource dialog · genre: editorial · theme: existing project · v2.0.0 */
+/* Critique: one real book, one author, two deliberate file actions; retain the study workspace. */
+:root{
+ --resource-ink:var(--bg);
+ --resource-action:var(--paper);
+}
+/* Modal surfaces own the scroll; the background must not add a viewport scrollbar. */
+html:has(dialog[open]),body:has(dialog[open]),html:has(#sand:not([hidden])),body:has(#sand:not([hidden])){overflow-y:hidden!important}
+.study-header #atlasBtn{white-space:nowrap;cursor:pointer}
+dialog.study-resources{--dialog-width:620px}
+.study-dialog.study-resources .study-dialog-head h2{font-size:20px;text-wrap:balance}
+.study-resources .study-dialog-body{display:flex;flex-direction:column;gap:20px}
+.resource-book{display:grid;grid-template-columns:minmax(0,108px) minmax(0,1fr);gap:24px;align-items:center}
+.resource-cover{display:block;width:100%;height:auto;border:1px solid var(--study-border)}
+.resource-description{min-width:0}
+.resource-description h3{margin:0;font:900 28px/1.4 var(--study-font-display);color:var(--paper);overflow-wrap:break-word;min-width:0}
+.resource-description p{font:400 13px/1.8 var(--study-font-body);color:var(--text-dim);margin:8px 0}
+.resource-description .resource-subtitle{margin:4px 0 8px;color:var(--paper)}
+.resource-meta{display:flex;flex-wrap:wrap;gap:12px}
+.resource-meta span:first-child{color:var(--gold)}
+.resource-version{font-size:11px;color:var(--text-faint)}
+.resource-author{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.resource-follow{min-width:0}
+.resource-follow h3{margin:0;font:400 15px/1.6 var(--study-font-body);color:var(--paper);overflow-wrap:break-word;min-width:0}
+.resource-follow p{margin:8px 0 0;font:400 12px/1.8 var(--study-font-body);color:var(--text-dim)}
+.resource-follow strong{font-weight:400;color:var(--gold)}
+.resource-account{display:flex;align-items:center;flex-wrap:wrap;gap:0 12px;margin-top:4px;font-size:11px;color:var(--text-dim)}
+.resource-account b{font-weight:400;color:var(--paper);user-select:text}
+.resource-account button{min-height:44px;padding:0;border:0;background:none;font:400 12px/1.5 var(--study-font-body);color:var(--gold);cursor:pointer}
+.resource-follow .resource-feedback{margin:0;font-size:11px;color:var(--gold)}
+.resource-feedback:empty{display:none}
+.resource-qr{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 10px;border:1px solid var(--study-border);border-radius:var(--study-radius);background:none;cursor:pointer;color:var(--gold);white-space:nowrap;font:400 12px/1.4 var(--study-font-body)}
+.resource-note{margin:0;font:400 11px/1.7 var(--study-font-body);color:var(--text-faint)}
+.resource-actions{display:flex;align-items:center;gap:12px}
+.resource-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;border:1px solid var(--study-border);border-radius:var(--study-radius);font:400 13px/1.5 var(--study-font-body);text-decoration:none;color:var(--paper)}
+.resource-actions #atlasDownload{background:var(--resource-action);color:var(--resource-ink);border-color:var(--resource-action)}
+.resource-actions a:hover{border-color:var(--gold)}
+.resource-actions #atlasDownload:hover{background:var(--gold);border-color:var(--gold)}
+.resource-actions a:active,.resource-account button:active{opacity:.8}
+.resource-account button:hover,.resource-qr:hover{color:var(--paper)}
+.resource-qr:active{opacity:.8}
+.study-resources :is(a,button):focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:600px){
+ .resource-book{grid-template-columns:minmax(0,80px) minmax(0,1fr);gap:16px}
+ .resource-description h3{font-size:24px}
+ .resource-author{gap:12px;padding-top:16px}
+ .resource-follow h3{font-size:14px}
+ .resource-account{gap:0 8px}
+ .resource-actions a{flex:1;padding:8px}
+}
+@media(max-height:520px){
+ .resource-book{grid-template-columns:minmax(0,64px) minmax(0,1fr)}
+ .resource-description h3{font-size:24px}
+}
+.community-group-guide{padding-top:12px;border-top:1px solid var(--line);font:400 12px/1.8 var(--study-font-body);color:var(--text-dim)}
+.community-group-guide[hidden]{display:none}
+.community-group-guide p{margin:0 0 8px}
+.community-group-guide p:last-child,.community-group-guide p:empty{margin:0}
+.community-group-guide button{min-height:44px;padding:0;border:0;background:none;color:var(--gold);font:400 12px/1.5 var(--study-font-body);cursor:pointer}
+.community-group-guide button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.community-group-guide button:hover{color:var(--paper)}
+.community-group-guide button:active{opacity:.8}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A0D12"><meta name="description" content="24场会议、9组常见易混组合。并排比较时间、背景、决议与历史意义，核对易混点及原始资料。">
+<title>会议对比 · 考研政治时间轴</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230A0D12'/%3E%3Cpath d='M10 12H30M10 20H30M10 28H30M20 8V32' stroke='%23C9A24D' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/v51/sans-core-e274e4789ecb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="src/study-fonts.css?v=51"><link rel="stylesheet" href="src/study-theme.css?v=16"><link rel="stylesheet" href="src/study-editorial.css?v=16"><link rel="stylesheet" href="src/meetings.css?v=16">
+<script defer src="src/lecture-data.js"></script><script defer src="src/study-scenes.js?v=16"></script><script defer src="src/study-ui.js?v=61"></script><script defer src="src/study-together.js?v=42"></script><script defer src="src/study-welcome.js?v=43"></script><script defer src="src/study-community.js?v=33"></script><script defer src="src/study-resources.js?v=61"></script><script defer src="src/meeting-data.js?v=16"></script><script defer src="src/meeting-core.js?v=40"></script><script defer src="src/meeting-share.js?v=49"></script><script defer src="src/meetings.js?v=62"></script>
+<link rel="stylesheet" href="src/study-system.css?v=61">
+<link rel="stylesheet" href="src/study-together.css?v=33">
+<link rel="stylesheet" href="src/study-welcome.css?v=43">
+<link rel="stylesheet" href="src/study-resources.css?v=34">
+<link rel="stylesheet" href="src/meeting-image.css?v=47">
+<link rel="stylesheet" href="src/study-support.css?v=49">
+<script defer src="src/study-support.js?v=53"></script>
+<link rel="stylesheet" href="src/meeting-export-control.css?v=50">
+</head>
+<body class="meetings-page">
+<a class="skip-compare" href="#comparison">跳到会议对比</a>
+<header class="study-header" data-page="meetings"></header>
+<main class="meetings-main">
+ <h1 class="sr-only">会议对比</h1>
+ <section class="preset-section" aria-label="常见对比组合"><span class="preset-label">常见组合</span><div id="meetingPresets" class="meeting-presets"></div></section>
+ <div class="compare-workspace">
+  <aside class="meeting-library" id="meetingLibrary" aria-labelledby="libraryTitle"><div class="library-top"><h2 id="libraryTitle">会议库</h2><button id="closeLibrary" type="button" aria-label="关闭会议库">×</button></div><div id="libraryNotice" class="library-notice" role="status" aria-live="polite" hidden><p id="libraryNoticeText"></p><button id="manageSelection" type="button">调整已选会议 →</button></div><div id="libraryBody" class="library-body" tabindex="0" aria-label="会议筛选与列表"><div id="librarySelection" class="library-selected" aria-label="当前已选会议"></div><label class="meeting-search"><span aria-hidden="true">⌕</span><input id="meetingSearch" type="search" placeholder="年份、会议、关键词" aria-label="搜索会议"></label><label class="period-label" for="meetingPeriod">历史时期</label><select id="meetingPeriod"><option value="all">全部时期</option><option value="revolution">新民主主义革命</option><option value="construction">社会主义建设探索</option><option value="reform">改革开放新时期</option><option value="newera">中国特色社会主义新时代</option></select><p id="libraryCount" class="library-count" role="status"></p><div id="meetingList" class="meeting-list"></div></div><div class="library-bottom"><button id="finishSelection" type="button">完成选择</button></div></aside>
+  <section class="comparison" id="comparison" aria-label="会议对比内容" tabindex="-1">
+   <div class="selection-bar"><div class="selection-top"><span id="selectionCount">已选 0 / 3</span><div class="selection-actions"><button id="openLibrary" type="button" aria-haspopup="dialog">选择会议 <span>＋</span></button><button id="clearSelection" type="button">清空</button></div></div><div id="selectedMeetings" class="selected-meetings"></div><p id="selectionNotice" class="selection-notice" role="status" aria-live="polite"></p></div>
+   <div class="comparison-toolbar"><div class="compare-modes" role="group" aria-label="对比内容详略"><button type="button" data-mode="core" aria-pressed="true">核心记忆</button><button type="button" data-mode="full" aria-pressed="false">完整对照</button></div><div class="compare-export"><button id="copyComparisonLink" type="button" title="复制当前会议组合链接">复制链接</button><button id="exportComparison" class="meeting-export-control" data-state="ready" type="button" aria-haspopup="dialog"><span class="export-lock" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 9V6a4 4 0 0 1 8 0v3M5 9h10v8H5zM10 12v2"/></svg></span><span class="export-label">导出对比图片</span><span class="export-ice" aria-hidden="true"></span></button></div></div>
+   <aside id="compareHint" class="compare-hint" aria-label="组合记忆提示"></aside>
+   <div id="comparisonContent"></div>
+   <p class="compare-footnote">基础内容截至 2022 年 · 每场会议附核对来源。<a href="kaoyan-review.html#view=meet">会议与文献速查 ↗</a></p>
+  </section>
+ </div>
+</main>
+<dialog id="libraryDialog" class="library-dialog" aria-labelledby="libraryTitle"></dialog>
+<dialog id="copyLinkDialog" class="copy-link-dialog" aria-labelledby="copyLinkTitle"><button id="closeCopyLink" type="button" aria-label="关闭链接窗口">×</button><h2 id="copyLinkTitle">复制当前对比链接</h2><p>已选中链接，可复制后分享。</p><input id="copyLinkValue" aria-label="当前对比链接" readonly></dialog>
+<dialog id="comparisonImageDialog" class="study-dialog comparison-image-dialog" aria-labelledby="comparisonImageTitle">
+ <div class="study-dialog-head"><h2 id="comparisonImageTitle">保存对比图片</h2><button id="closeComparisonImage" class="study-dialog-close" type="button" aria-label="关闭图片预览">×</button></div>
+ <div class="study-dialog-body"><p id="comparisonImageStatus" class="comparison-image-status" role="status">正在生成对比图片…</p><a id="comparisonImagePreview" class="comparison-image-preview" target="_blank" rel="noopener" aria-label="查看对比图片原图" hidden><img id="comparisonImage" alt="会议对比图片"></a></div>
+ <div class="study-dialog-footer comparison-image-footer"><div><p id="comparisonImageMeta"></p><small>点击预览查看原图，手机可长按保存。</small></div><a id="downloadComparisonImage" download hidden>保存 PNG 图片</a></div>
+</dialog>
+<dialog hidden id="comparisonShareDialog" class="study-dialog comparison-share-dialog" aria-labelledby="comparisonShareTitle">
+ <div class="study-dialog-head"><h2 id="comparisonShareTitle">分享给研友</h2><button id="closeComparisonShare" class="study-dialog-close" type="button" aria-label="关闭分享邀请">×</button></div>
+ <div class="study-dialog-body">
+  <p id="comparisonShareStatus" class="comparison-share-intro" role="status" aria-live="polite">把这份复习工具分享给研友。</p>
+  <div id="comparisonShareFallback"><div class="comparison-share-preview-head"><label class="comparison-share-label" for="comparisonShareText">分享文案</label><a id="comparisonShareProfile" target="_blank" rel="noopener noreferrer">抖音主页 ↗</a></div><textarea id="comparisonShareText" readonly spellcheck="false" aria-describedby="comparisonShareStatus"></textarea></div>
+ </div>
+ <div class="study-dialog-footer comparison-share-footer"><button id="copyComparisonShare" type="button">复制文案</button><button id="confirmComparisonShare" type="button" disabled>分享后继续</button></div>
+</dialog>
+<noscript><p>请启用 JavaScript 使用会议对比。也可打开<a href="downloads/kaoyan-atlas-v6.1-67p.pdf">复习图册</a>。</p></noscript>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8e5b8396976a47ae8d20547ca0a24ce4"}'></script><!-- Cloudflare Pages Analytics --></body></html>

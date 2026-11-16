@@ -1,0 +1,69 @@
+/* Hallmark · component: study ambience · genre: editorial · theme: existing project · v2.0.0
+ * Critique: occupy the existing subtitle; keep the map dominant and numbers steady in width.
+ * Owner explicitly requested the audience label with generated figures; no measured data.
+ */
+/* Hallmark · waive 24b · The existing mobile header uses 10px top padding and 38px rows · Tight padding preserves readable text and map height */
+:root{
+ --together-signal:#88B69A;
+ --together-night:var(--gold);
+ --together-copy:var(--paper);
+ --together-number:var(--gold);
+ --together-font:var(--study-font-body);
+ --together-toast:var(--text-dim);
+ --together-activity:#BCB4A5;
+}
+.study-brand{min-width:0}
+.study-brand>span{min-width:0}
+.study-brand>span>b{line-height:1.3}
+.study-brand .study-together{
+ display:flex;align-items:center;gap:4px;min-width:0;margin-top:0;
+ font:400 14px/20px var(--together-font);letter-spacing:0;color:var(--together-copy);
+ white-space:nowrap;width:max-content;height:24px;padding:0;
+ border:0;border-radius:0;background:none;
+}
+.study-together-period{font-size:11px;color:var(--together-toast);margin-right:2px}
+.study-together-signal{position:relative;width:6px;height:6px;border-radius:50%;background:var(--together-signal);flex:0 0 auto;margin-right:4px}
+.study-together-signal::after{content:'';position:absolute;inset:-2px;border:1px solid var(--together-signal);border-radius:50%;animation:study-together-pulse 2.8s ease-out infinite;pointer-events:none}
+.study-together[data-period=night] .study-together-signal{background:var(--together-night)}
+.study-together[data-period=night] .study-together-signal::after{border-color:var(--together-night)}
+.study-together-value{display:inline-block;width:3ch;text-align:right;flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:400;color:var(--together-number)}
+.lecture-app .study-brand .study-together{display:flex}
+.study-live-toast{display:flex;align-items:center;gap:4px;min-width:0;color:var(--together-activity);font:400 11px/20px var(--together-font);white-space:nowrap}
+.study-live-toast svg{width:12px;height:12px;flex:0 0 auto;stroke:var(--gold);fill:none}
+.study-activity button{display:flex;align-items:center;justify-content:center;min-width:0;padding:0;border:0;border-radius:var(--study-radius);background:none;color:inherit;font:inherit;cursor:pointer;flex-shrink:0}
+.study-activity .study-activity-link{flex:1 1 0;justify-content:flex-start;gap:8px;min-height:44px;text-align:left}
+.study-activity-copy{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.study-activity-narrow{display:none}
+.study-activity button:hover{color:var(--gold)}
+.study-activity button:hover svg{stroke:var(--gold)}
+.study-activity button:active{opacity:.75}
+.study-activity button:focus-visible{outline:2px solid var(--gold);outline-offset:0}
+@media(min-width:1280px){
+ .study-live-toast{flex:0 1 330px;margin-left:auto;min-height:44px}
+}
+/* One reserved line keeps rotation out of the map and avoids page movement. */
+@media(max-width:1279px){
+ :root{--announcement-height:24px}
+ .study-header{padding-top:0;padding-bottom:var(--announcement-height)}
+ .study-live-toast{position:absolute;left:24px;right:24px;bottom:0;height:24px;padding:0;border:0;background:none}
+ .study-activity .study-activity-link{min-height:24px}
+ .timeline-page #app{grid-template-rows:calc(56px + var(--announcement-height)) auto minmax(0,1fr) auto}
+}
+@media(max-width:1180px){.study-live-toast{left:20px;right:20px}}
+@media(max-width:1100px){.study-brand .study-together{font-size:13px;line-height:18px;height:22px}}
+@media(max-width:700px){
+ .study-brand>span>b{line-height:1.2}.study-brand .study-together{height:20px}
+ .study-header{height:calc(87px + var(--announcement-height));min-height:calc(87px + var(--announcement-height));padding-top:10px}
+ .study-live-toast{left:17px;right:17px}
+ .timeline-page #app{grid-template-rows:auto auto minmax(0,1fr) auto}
+}
+@media(min-width:600px) and (max-width:1100px) and (max-height:520px){
+ .lecture-app,.focus-mode.lecture-app{grid-template-rows:calc(48px + var(--announcement-height)) 36px minmax(0,1fr) auto}
+ .lecture-app .study-header{height:calc(48px + var(--announcement-height));min-height:calc(48px + var(--announcement-height));padding-top:0;padding-bottom:var(--announcement-height)}
+ .lecture-app .study-header nav{height:100%}
+ .contents.mobile-open,.focus-mode .contents.mobile-open{top:calc(84px + var(--announcement-height))}
+}
+@media(max-width:350px){.study-brand .study-together{font-size:12px}}
+@media(max-width:360px){.study-activity-wide{display:none}.study-activity-narrow{display:inline}}
+@keyframes study-together-pulse{0%{transform:scale(.8);opacity:.45}75%,100%{transform:scale(1.65);opacity:0}}
+@media(prefers-reduced-motion:reduce){.study-together-signal::after{animation:none;opacity:0}.study-live-toast{transition:none;transform:none}}

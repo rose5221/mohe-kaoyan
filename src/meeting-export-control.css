@@ -1,0 +1,62 @@
+/* Hallmark · component: export button · genre: editorial · theme: existing study system · states: 8 · contrast: reviewed · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, one requested ice material used only for the locked export action. */
+/* Hallmark · waive 24b · adjacent copy control uses 5px 10px and 7px mobile padding in study-system.css · user requested identical toolbar dimensions, so preserve the existing spacing system */
+:root{
+ --export-ice-base:#142a35;--export-ice-top:#24414b;--export-ice-ink:#e4f0f3;
+ --export-ice-edge:#789da8;--export-ice-glint:#d1f1f34a;--export-ice-vein:#d1f1f330;
+ --export-clear:transparent;--export-focus:var(--gold);--export-error:#e7a188;
+ --export-action-bg:#c9a24d0d;--export-hover-bg:#c9a24d19;
+ --export-short:220ms;--export-press:120ms;--export-ease:cubic-bezier(.22,.61,.36,1);
+}
+#exportComparison.meeting-export-control,.meeting-export-control{
+ box-sizing:border-box;position:relative;isolation:isolate;overflow:hidden;
+ display:inline-flex;align-items:center;justify-content:center;
+ min-width:136px;min-height:44px;padding:8px 16px;
+ border:1px solid var(--gold);border-radius:var(--study-radius,4px);
+ background:var(--export-action-bg);color:var(--gold);
+ font:400 12px/1.7 var(--study-font-body);white-space:nowrap;cursor:pointer;
+ transition:background-color var(--export-short) var(--export-ease),transform var(--export-press) var(--export-ease);
+}
+.meeting-export-control .export-label{position:relative;z-index:2;transition:transform var(--export-short) var(--export-ease)}
+.meeting-export-control .export-lock[aria-hidden=true]{position:absolute;z-index:2;left:10px;top:50%;width:14px;height:16px;opacity:0;transform:translateY(-50%);pointer-events:none}
+.meeting-export-control .export-lock svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.meeting-export-control .export-ice[aria-hidden=true]{position:absolute;z-index:1;inset:0;pointer-events:none;opacity:0;transform:scale(.97);background:linear-gradient(120deg,var(--export-clear) 12%,var(--export-ice-glint) 13%,var(--export-clear) 15%,var(--export-clear) 76%,var(--export-ice-vein) 77%,var(--export-clear) 79%),linear-gradient(170deg,var(--export-ice-top),var(--export-ice-base));box-shadow:inset 0 1px 0 var(--export-ice-glint),inset 0 -2px 0 var(--export-ice-vein);transition:opacity var(--export-short) var(--export-ease),transform var(--export-short) var(--export-ease)}
+#exportComparison[data-state=locked],.meeting-export-control[data-state=locked]{border-color:var(--export-ice-edge);color:var(--export-ice-ink);background:var(--export-ice-base)}
+.meeting-export-control[data-frozen=true] .export-ice{opacity:1;transform:scale(1)}
+.meeting-export-control[data-frozen=true] .export-lock{opacity:1}
+.meeting-export-control[data-frozen=true] .export-label{transform:translateX(7px)}
+.meeting-export-control:focus-visible,.meeting-export-control.is-focus{outline:2px solid var(--export-focus);outline-offset:3px}
+.meeting-export-control:active:not(:disabled),.meeting-export-control.is-active{transform:translateY(1px)}
+#exportComparison:disabled,.meeting-export-control:disabled{opacity:.55;cursor:not-allowed}
+#exportComparison[aria-busy=true],.meeting-export-control[aria-busy=true]{cursor:progress;opacity:.8}
+.meeting-export-control[aria-busy=true] .export-lock{opacity:1;border:1.5px solid currentColor;border-right-color:var(--export-clear);border-radius:50%;height:12px;width:12px;animation:export-working .8s linear infinite}
+.meeting-export-control[aria-busy=true] .export-lock svg{visibility:hidden}
+.meeting-export-control[aria-busy=true] .export-label{transform:translateX(7px)}
+#exportComparison[data-state=error],.meeting-export-control[data-state=error]{border-color:var(--export-error);color:var(--export-error)}
+@media(hover:hover){
+ #exportComparison:hover:not(:disabled),.meeting-export-control:hover:not(:disabled),.meeting-export-control.is-hover{background:var(--export-hover-bg)}
+ #exportComparison[data-state=locked]:hover,.meeting-export-control[data-state=locked]:hover{border-color:var(--export-ice-ink);background:var(--export-ice-base)}
+}
+@keyframes export-working{to{transform:translateY(-50%) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+ .meeting-export-control,.meeting-export-control .export-label,.meeting-export-control .export-ice[aria-hidden=true]{transition:none}
+ .meeting-export-control[aria-busy=true] .export-lock{animation:none}
+}
+
+/* v50: use the neighboring toolbar control's dimensions; the label sets the width. */
+:root{--export-action-edge:#c9a24d55}
+#exportComparison.meeting-export-control,.meeting-export-control{min-width:0;min-height:36px;padding:5px 10px}
+#exportComparison.meeting-export-control:not([data-state=locked]):not([data-state=error]),.meeting-export-control:not([data-state=locked]):not([data-state=error]){border-color:var(--export-action-edge);background:var(--export-clear)}
+.meeting-export-control .export-lock[aria-hidden=true]{left:3px;width:9px;height:11px}
+.meeting-export-control[data-frozen=true] .export-label,.meeting-export-control[aria-busy=true] .export-label{transform:translateX(4px)}
+.meeting-export-control[aria-busy=true] .export-lock[aria-hidden=true]{width:8px;height:8px;border-width:1px}
+@media(hover:hover){
+ #exportComparison.meeting-export-control:not([data-state=locked]):not([data-state=error]):hover:not(:disabled),.meeting-export-control:not([data-state=locked]):not([data-state=error]):hover:not(:disabled),.meeting-export-control.is-hover:not([data-state=locked]):not([data-state=error]){background:var(--export-hover-bg)}
+}
+@media(max-width:1000px){
+ #exportComparison.meeting-export-control,.meeting-export-control{min-height:40px}
+}
+@media(max-width:700px){
+ #exportComparison.meeting-export-control,.meeting-export-control{padding-inline:7px}
+ .meeting-export-control .export-lock[aria-hidden=true]{left:1px;width:8px}
+}
